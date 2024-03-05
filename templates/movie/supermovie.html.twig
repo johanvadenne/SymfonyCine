@@ -1,0 +1,18 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{original_title}}!{% endblock %}
+
+{% block body %}
+{{adult}}<br>
+{{backdrop_path}}<br>
+{{id}}<br>
+{{original_language}}<br>
+{{overview}}<br>
+{{popularity}}<br>
+<img src="https://image.tmdb.org/t/p/w220_and_h330_face{{poster_path}}"/><br>
+{{release_date}}<br>
+{{title}}<br>
+{{video}}<br>
+{{vote_average}}<br>
+{{vote_count}}<br>
+{% endblock %}

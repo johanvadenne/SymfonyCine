@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h1>Film</h1>
+    <form method="POST" action="{{ path('app_home3') }}">
+        <input id="recherche_film" name="term">
+        <input type="submit" value="Rechercher">
+    </form>
+
+
+
+
+
+    {% for film in results %}
+        {{film.adult}}<br>
+        {{film.backdrop_path}}<br>
+        {{film.id}}<br>
+        {{film.original_language}}<br>
+        {{film.overview}}<br>
+        {{film.popularity}}<br>
+        <img src="https://image.tmdb.org/t/p/w220_and_h330_face{{film.poster_path}}"/><br>
+        {{film.release_date}}<br>
+        {{film.title}}<br>
+        {{film.video}}<br>
+        {{film.vote_average}}<br>
+        {{film.vote_count}}<br> 
+    {% endfor %}
+{% endblock %}
