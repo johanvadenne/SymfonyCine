@@ -46,7 +46,6 @@ class HomeController extends AbstractController
     #[Route('/accueil2', name: 'app_home3')]
     public function index(Request $request): Response
     {
-        $term = "";
         if ($request->getMethod() == "POST") {
             $term = $_POST["term"];
         }
@@ -63,19 +62,24 @@ class HomeController extends AbstractController
         return $this->render('home/chercheFilm.html.twig', ["results" => $json->results]);
     }
 
-    #[Route('/accueil2/auCine', name: 'app_home4')]
-    public function auCine(Request $request): Response
+    #[Route('/accueil2/test/{term}', name: 'app_home_test', requirements: ['term' => '.+'])]
+    public function test(String $term): Response
     {
         $API_KEY_TMDB = $_ENV["TMDB_API_KEY"];
-        $URL_TMDB = "https://api.themoviedb.org/3/search/movie/0?api_key=" . $API_KEY_TMDB . "&&language=fr-FR&page=1";
-        
+        $URL_TMDB = "https://api.themoviedb.org/3/search/movie?api_key=" . $API_KEY_TMDB . "&query=" . "&language=fr-FR&page=1";
+
         $ch = curl_init();
         curl_setopt($ch, CURLOPT_URL, $URL_TMDB);
         curl_setopt($ch,  CURLOPT_RETURNTRANSFER, true);
 
         $resultat_curl = curl_exec($ch);
+        // On transforme le résultat de cURL en un objet JSON utilisable
         $json = json_decode ( $resultat_curl);
-        var_dump($URL_TMDB);
-        return $this->render('home/chercheFilm.html.twig', ["results" => $json->results]);
+        usort($json, function($a, $b) {
+            return strtotime($a['release_date']) - strtotime($b['release_date']);
+        });
+        $json = json_decode ( $resultat_curl);
+        
+        return $this->render('home/film_pop.html.twig', ["results" => $json->results]);
     }
 }
