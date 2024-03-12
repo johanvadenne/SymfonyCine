@@ -22,7 +22,7 @@ class FilmController extends AbstractController
 
         $client = new \GuzzleHttp\Client();
             
-        $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/popular?language=en-US&page=1', [
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/popular?language=fr-FR&page=1', [
           'headers' => [
             'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZGZlNjA4NThlM2E4MjlhNWIwY2QyZjBiMjc3NDE5MSIsInN1YiI6IjY1Nzg2Y2FmNGJmYTU0NWQwMDFlYWVhMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eojm5Og3cCeBIme1VmMMJVBOUWP-BobXLreogqdHt0M',
             'accept' => 'application/json',
@@ -35,6 +35,27 @@ class FilmController extends AbstractController
 
         return $this->render('film/film_pop.html.twig', [
             'films' => $films,
+        ]);
+    }
+
+    #[Route('/film/{id}', name: 'app_film_select')]
+    public function filmSelect($id): Response
+    {
+        $client = new \GuzzleHttp\Client();
+            
+        $response = $client->request('GET', 'https://api.themoviedb.org/3/movie/'. $id, [
+          'headers' => [
+            'Authorization' => 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwZGZlNjA4NThlM2E4MjlhNWIwY2QyZjBiMjc3NDE5MSIsInN1YiI6IjY1Nzg2Y2FmNGJmYTU0NWQwMDFlYWVhMiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.eojm5Og3cCeBIme1VmMMJVBOUWP-BobXLreogqdHt0M',
+            'accept' => 'application/json',
+          ],
+        ]);
+
+        $film = json_decode($response->getBody(), true);
+        $film["note"] = "4";
+
+
+        return $this->render('film/film_select.html.twig', [
+            'film' => $film,
         ]);
     }
 }

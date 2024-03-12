@@ -1,0 +1,28 @@
+{% extends 'base.html.twig' %}
+
+
+{% block body %}
+    <h1>Film</h1>
+
+    <h2>{{film.original_title}}</h2>
+    <img src="https://image.tmdb.org/t/p/w220_and_h330_face{{film.poster_path}}"/><br>
+    <p>adulte: {% if film.adult %}oui{% else %}non{% endif %}</p>
+    <p>genre: | 
+    {% for genre in film.genres %}
+        {{genre.name}} | 
+    {% endfor %}
+    </p>
+    <p>description: {{film.overview}}</p>
+    <p>popularité: {{film.popularity}}</p>
+    <p>date: {{film.release_date}}</p>
+    <p>status: {{film.status}}</p>
+    <p>note: {{film.note}}/5</p>
+
+    <form>
+        <input placeholder="Nom" />
+        <input placeholder="Prénom" />
+        <input type="number" max="5" min="0" placeholder="Note" />
+        <input type="submit"/>
+    </form>
+
+{% endblock %}
