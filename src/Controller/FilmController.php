@@ -5,6 +5,8 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\CamilleLaChenille;
+use App\Form\CamilleLaChenilleType;
 
 class FilmController extends AbstractController
 {
@@ -53,9 +55,17 @@ class FilmController extends AbstractController
         $film = json_decode($response->getBody(), true);
         $film["note"] = "4";
 
+        
+        
+        $task = new CamilleLaChenille();
+        $task->getId = $id;
+
+        $form = $this->createForm(CamilleLaChenilleType::class, $task);
+
 
         return $this->render('film/film_select.html.twig', [
             'film' => $film,
+            'ratingForm' => $form
         ]);
     }
 }

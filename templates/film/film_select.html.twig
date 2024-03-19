@@ -17,12 +17,18 @@
     <p>date: {{film.release_date}}</p>
     <p>status: {{film.status}}</p>
     <p>note: {{film.note}}/5</p>
-
+    {# This will be a comment 
     <form>
         <input placeholder="Nom" />
         <input placeholder="Prénom" />
         <input type="number" max="5" min="0" placeholder="Note" />
         <input type="submit"/>
     </form>
+
+    {{ dump(ratingForm) }}
+    #}
+    {{ form(ratingForm) }}
+    <input type="submit">
+    {{ form_end(ratingForm) }}
 
 {% endblock %}

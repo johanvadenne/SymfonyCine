@@ -5,6 +5,6 @@
     <h1>Film</h1>
 
     {% for film in films %}
-        <a href="http://localhost:8000/film/{{film.id}}"><img src="https://image.tmdb.org/t/p/w220_and_h330_face{{film.poster_path}}"/></a>
+        <a href="http://localhost:8001/film/{{film.id}}"><img src="https://image.tmdb.org/t/p/w220_and_h330_face{{film.poster_path}}"/></a>
     {% endfor %}
 {% endblock %}

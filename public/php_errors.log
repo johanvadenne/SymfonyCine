@@ -1,0 +1,5 @@
+[19-Mar-2024 15:05:00 Europe/Berlin] PHP Warning:  PHP Startup: Unable to load dynamic library 'pdo_sqlite' (tried: /usr/lib/php/20220829/pdo_sqlite (/usr/lib/php/20220829/pdo_sqlite: cannot open shared object file: No such file or directory), /usr/lib/php/20220829/pdo_sqlite.so (/usr/lib/php/20220829/pdo_sqlite.so: undefined symbol: php_pdo_unregister_driver)) in Unknown on line 0
+[19-Mar-2024 15:16:03 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/johan/symfony/SymfonyCine/vendor/symfony/options-resolver/OptionsResolver.php on line 870
+[19-Mar-2024 15:16:34 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/johan/symfony/SymfonyCine/vendor/symfony/options-resolver/OptionsResolver.php on line 924
+[19-Mar-2024 15:17:04 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/johan/symfony/SymfonyCine/vendor/symfony/options-resolver/OptionsResolver.php on line 1145
+[19-Mar-2024 15:18:02 UTC] PHP Fatal error:  Maximum execution time of 30 seconds exceeded in /home/johan/symfony/SymfonyCine/vendor/symfony/form/FormConfigBuilder.php on line 98
